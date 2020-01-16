@@ -64,7 +64,14 @@ from world a
 where name in (select name from world
 where continent = a.continent)
 and 25000000 >= all(select population from world
-where continent  = a.continent)
+where continent  = a.continent);
+
+/*both method works, the first one is helping you get through the logic :D*/
+select name, continent,population
+from world a
+where name in (select name from world
+where 25000000 >= all(select population from world
+where continent  = a.continent));
 
 /*10. Some countries have populations more than three times that of any of their
 neighbours (in the same continent). Give the countries and continents.*/
